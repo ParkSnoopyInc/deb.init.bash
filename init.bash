@@ -16,7 +16,7 @@ DISTRO=$( . /etc/lsb-release && echo $DISTRIB_ID | tr '[:upper:]' '[:lower:]' )
 
 
 sudo apt update
-sudo apt install -y git gh nano curl wget zsh htop btop ca-certificates build-essential cmake
+sudo apt install -y git gh nano curl wget zsh htop btop ca-certificates build-essential cmake pkg-config
 
 # RUST
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -35,7 +35,7 @@ echo \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo usermod -aG docker $USER
 
 # GITHUB LOGIN
