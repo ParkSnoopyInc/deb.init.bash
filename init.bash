@@ -16,7 +16,14 @@ DISTRO=$( . /etc/lsb-release && echo $DISTRIB_ID | tr '[:upper:]' '[:lower:]' )
 
 
 sudo apt update
-sudo apt install -y git gh nano curl wget zsh htop btop ca-certificates build-essential cmake pkg-config
+sudo apt install -y git gh nano curl wget zsh sed htop btop ca-certificates build-essential cmake pkg-config
+
+
+# OhMyZsh + powerlevel10k
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k/powerlevel10k"/' $HOME/.zshrc
+source .zshrc
 
 # RUST
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
