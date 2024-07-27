@@ -2,7 +2,7 @@
 
 
 # For docker container
-apt install -y sudo || echo "Sudo is Installed"
+apt update && apt install -y sudo || echo "Sudo is Installed"
 
 # Some General Packages
 sudo apt update
@@ -23,7 +23,9 @@ echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale
 sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
 
 echo
-echo ====< Installation Complete! >=====
+echo
+echo
+echo ===== Installation Complete! ======
 echo
 echo To change your shell to ZSH, run:
 echo chsh -s /usr/bin/zsh
@@ -31,9 +33,8 @@ echo
 echo To login GitHub, run:
 echo gh auth login
 echo
-echo To login Tailscale, run:
+echo To login Tailscale, run one of:
 echo sudo tailscale up
-echo  or,
 echo sudo tailscale up --advertise-exit-node
 echo
 echo ===================================
